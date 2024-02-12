@@ -3,9 +3,9 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CheckoutPage {
+public class CheckoutYourInformationPage {
     public WebDriver driver;
-    public CheckoutPage(WebDriver driver) {
+    public CheckoutYourInformationPage(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -27,6 +27,15 @@ public class CheckoutPage {
     }
     public void clickContinue() {
         driver.findElement(continueButton).click();
+    }
+
+    public void fillInCheckoutInfo(String firstname,String lastname, String postalCode) {
+        enterFirstName("Ana");
+        enterLastName("Blandiana");
+        enterPostalCode("445445");
+        clickContinue();
+
+
     }
 
 }

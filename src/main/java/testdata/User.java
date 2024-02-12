@@ -3,13 +3,12 @@ package testdata;
 import org.json.simple.JSONObject;
 import utils.Reader;
 
-public class StandardUser {
-
+public class User {
 
     private String username;
     private String password;
 
-    public StandardUser(String filename) {
+    public User(String filename) {
         JSONObject json = Reader.json(filename);
         this.username = json.get("username").toString();
         this.password = json.get("password").toString();
