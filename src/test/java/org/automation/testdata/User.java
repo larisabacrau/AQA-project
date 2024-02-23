@@ -1,7 +1,7 @@
-package testdata;
+package org.automation.testdata;
 
+import org.automation.utils.Reader;
 import org.json.simple.JSONObject;
-import utils.Reader;
 
 public class User {
 

@@ -1,4 +1,4 @@
-package utils;
+package org.automation.utils;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Reader {
     public static JSONObject json(String name) {
-        String jsonPath = System.getProperty("user.dir") + "\\src\\main\\resources\\testdata\\" + name + ".json";
+        String jsonPath = System.getProperty("user.dir") + "\\src\\test\\resources\\testdata\\" + name + ".json";
         System.out.println("path:" + jsonPath);
         //read the json file from the specified location
         FileReader reader = null;

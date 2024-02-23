@@ -1,11 +1,10 @@
-package pages;
+package org.automation.pages;
 
+import org.automation.testdata.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CheckoutOverviewPage {
-    public WebDriver driver;
-    private final By overviewHeader = By.xpath("//div[@class='header_secondary_container']/descendant::span[@class='title']");
     private final By finishButton = By.id("finish");
     private final By cancelButton = By.id("cancel");
     private final By onesieTitle = By.xpath("//div[@class=\"inventory_item_name\"][contains(text(), \"Onesie\")]");
@@ -16,7 +15,9 @@ public class CheckoutOverviewPage {
     private final By shippingInformation = By.xpath("//div[@class=\"summary_info_label\"][contains(text(), \"Payment\")]/following::div[@class=\"summary_value_label\"][2]");
     private final By itemSubtotal = By.xpath("//div[@class=\"summary_subtotal_label\"]");
     private final By itemTax = By.xpath("//div[@class=\"summary_tax_label\"]");
-    private By itemTotal = By.xpath("//div[@class=\"summary_info_label summary_total_label\"]");
+    private final By itemTotal = By.xpath("//div[@class=\"summary_info_label summary_total_label\"]");
+
+    public WebDriver driver;
 
     public CheckoutOverviewPage(WebDriver driver) {
         this.driver = driver;
@@ -26,16 +27,8 @@ public class CheckoutOverviewPage {
         driver.findElement(finishButton).click();
     }
 
-    public String getOnesieDescription() {
-        return driver.findElement(onesieDescription).getText();
-    }
-
-    public String getOnesiePrice() {
-        return driver.findElement(onesiePrice).getText();
-    }
-
-    public String getOnesieTitle() {
-        return driver.findElement(onesieTitle).getText();
+    public void clickCancel() {
+        driver.findElement(cancelButton).click();
     }
 
     public String getOnesieQuantity() {
@@ -50,18 +43,25 @@ public class CheckoutOverviewPage {
         return driver.findElement(shippingInformation).getText();
     }
 
-    public double getItemSubtotal() {
+    public Product getProductDetails() {
+        String title = driver.findElement(onesieTitle).getText();
+        String desc = driver.findElement(onesieDescription).getText();
+        String price = driver.findElement(onesiePrice).getText();
+        return new Product(title, desc, price);
+    }
+
+    public float getItemSubtotal() {
         String subTotalString = driver.findElement(itemSubtotal).getText();
-        return Double.valueOf(subTotalString.substring(subTotalString.indexOf('$') + 1));
+        return Float.parseFloat(subTotalString.substring(subTotalString.indexOf('$') + 1));
     }
 
-    public double getItemTax() {
+    public float getItemTax() {
         String taxString = driver.findElement(itemTax).getText();
-        return Double.valueOf(taxString.substring(taxString.indexOf('$') + 1));
+        return Float.parseFloat(taxString.substring(taxString.indexOf('$') + 1));
     }
 
-    public double getItemTotal() {
+    public float getItemTotal() {
         String totalString = driver.findElement(itemTotal).getText();
-        return Double.valueOf(totalString.substring(totalString.indexOf('$')+1));
+        return Float.parseFloat(totalString.substring(totalString.indexOf('$') + 1));
     }
 }

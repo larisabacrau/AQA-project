@@ -1,4 +1,4 @@
-package testdata.pages;
+package org.automation.testdata.pages;
 
 public class LoginTD {
     public static final String USERNAME_ERROR_MESSAGE = "Epic sadface: Username is required";

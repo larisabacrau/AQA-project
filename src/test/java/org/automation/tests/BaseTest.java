@@ -1,12 +1,12 @@
-package tests;
+package org.automation.tests;
 
+import org.automation.pages.*;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import pages.*;
-import testdata.User;
+import org.automation.testdata.User;
 
 
 import java.util.concurrent.TimeUnit;
@@ -28,9 +28,8 @@ public class BaseTest {
     public void before() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--remote-allow-origins=*", "ignore-certificate-errors");
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         driver = new ChromeDriver(chromeOptions);
-        //wait implicit
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
 

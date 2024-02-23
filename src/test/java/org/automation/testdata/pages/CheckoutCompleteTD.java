@@ -1,4 +1,4 @@
-package testdata.pages;
+package org.automation.testdata.pages;
 
 public class CheckoutCompleteTD {
     public static final String PAGE_TITLE = "Checkout: Complete!";

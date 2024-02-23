@@ -1,8 +1,7 @@
-package tests;
+package org.automation.tests;
 
+import org.automation.testdata.pages.LoginTD;
 import org.junit.Test;
-
-import testdata.pages.LoginTD;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -15,6 +14,7 @@ public class LoginTests extends BaseTest {
         assertEquals("Products", headerPage.getTitle());
 
     }
+
     @Test
     public void wrongUserLogin() {
         standardUser.setUsername("wrong_user");
@@ -26,8 +26,9 @@ public class LoginTests extends BaseTest {
     public void lockedOutLogin() {
         standardUser.setUsername("locked_out_user");
         loginPage.login(standardUser);
-        assertEquals("Epic sadface: Sorry, this user has been locked out.",LoginTD.LOCKEDOUT_ERROR_MESSAGE);
+        assertEquals("Epic sadface: Sorry, this user has been locked out.", LoginTD.LOCKEDOUT_ERROR_MESSAGE);
     }
+
     @Test
     public void logout() {
         loginPage.login(standardUser);

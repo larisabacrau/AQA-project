@@ -1,8 +1,8 @@
-package pages;
+package org.automation.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
 
 public class HeaderPage {
     public WebDriver driver;
@@ -13,6 +13,7 @@ public class HeaderPage {
     private By logo = By.xpath("//div[@class=\"app_logo\"]");
     private By menuButton = By.xpath("//button[@id=\"react-burger-menu-btn\"]");
     private By cart = By.xpath("//a[@class=\"shopping_cart_link\"]");
+    private By cartItems = By.xpath("//a[@class=\"shopping_cart_link\"]");
 
     private By secondHeaderText = By.xpath("//span[@class=\"title\"]");
     private By filter = By.xpath("//select[@class=\"product_sort_container\"]");
@@ -59,6 +60,7 @@ public class HeaderPage {
     public void clickPriceHighToLow() {
         driver.findElement(filterPriceHighToLow).click();
     }
+    public String getShoppingCartItems() { return driver.findElement(cartItems).getText(); }
 }
 
 
